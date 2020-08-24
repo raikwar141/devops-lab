@@ -1,0 +1,86 @@
+!/bin/bash
+Docker Swarm
+--------------------------------------
+1. What is Docker Swarm
+2. Why to use it
+3. How to create and manage Docker Swarm
+4. Create service on docker swarm
+5. Scalling services up and down (Horizontal)
+6. Features
+
+=========================================================================
+What is DockerSwarm
+=========================================================================
+A swarm is a group of machines that are running Docker and joined into a cluster.
+Docker Swarm is a clustering and scheduling tool for Docker containers.
+WIth Swarm, IT administrators and developers can establish and manage a cluster of Docker nodes asx a single virtual system.
+
+Docker Swarm is a tool for Container Orchestration.
+
+Example:
+        You have 200 Containers
+You need to do:
+        - Health check
+        - Ensure all containers are up on every system
+        - Scaling the containers up or down depending on the load
+        - Adding updates /changes to all the containers
+
+#Orchestration - Managing and controlling multiple docker containers as a single service
+#Tools available - Docker Swarm, Kubernetes, Apache Measos
+
+
+=========================================================================================
+        Install docker swarm
+=========================================================================================
+========================================================================================================
+                Create DOcker Machines (Manager and Worker )
+========================================================================================================
+                                                                                                                  
+Pre-requisites
+
+In this case, we will need the following:
+
+
+Centos -1       manager                 docker  install
+Centos -2       worker1                 docker  install
+(standalone (master and worker both one machine_
+
+=====================
+install docker
+inti-- docker swarm
+#docker swarm init
+========================================================================================================
+pull docker images from registry
+#docker pull raikwar141/thephotocraze
+
+========================================================================================================
+Create services
+========================================================================================================
+# (port forward -p [hostport:containerport]
+#docker service create --replicas 2 -p 7070:80 --name web raikwar141/thephotocraze:2
+#docker service ls
+#docker service ps servicename
+#docker node ps web
+
+
+========================================
+Scal up and down services
+========================================
+
+#docker service scale servicename=2
+#docker services ls
+#docker service scale web=4
+#docker service ls
+#docker service scale web=2
+
+========================================
+upgrade and rollback services
+========================================
+docker service ls
+docker node ps
+docker service update --image raikwar141/thephotocraze:3 web
+docker node ps
+dokcer service ls
+dokcer service rollback web
+                                                                                                                            60,1          Bot
+

@@ -1,0 +1,29 @@
+#CentOS Linux RPM packages for Jenkins
+#https://pkg.jenkins.io/redhat-stable/
+
+
+ping -c4 8.8.8.8
+yum install  -y epel-release
+yum -y update 
+yum install -y java
+
+#Download jenkins repository and import gpgkey
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+#install jenkins
+yum install -y jenkins
+
+#Ensure service is started and enabled
+systemctl start jenkins
+systemctl enable jenkins
+/sbin/chkconfig jenkins on
+
+#Open jenkins port in firewalll 8080
+firewall-cmd --permanent --add-port=8080/tcp
+firewall-cmd --reload
+
+#Access Jenkins from Web Portal
+#http://yourip:8080
+

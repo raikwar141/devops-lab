@@ -1,2 +1,2 @@
-# devops-lab
-# Kubernetes k8s lab setup
+# Kubernetes 
+k8s lab setup
